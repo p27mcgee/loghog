@@ -1,0 +1,544 @@
+[Contrast] Tue Oct 08 20:41:11 UTC 2024 Loading pre-packaged configuration
+[Contrast] Tue Oct 08 20:41:11 UTC 2024 Couldn't find pre-packaged configuration.
+[Contrast] Tue Oct 08 20:41:11 UTC 2024 Starting Contrast (build 6.10.0.localDevBuild) Pat. 8,458,789 B2
+[Contrast] Tue Oct 08 20:41:12 UTC 2024 Contrast logger configuration errors will be logged to stdout
+WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance.
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Copyright: 2024 Contrast Security, Inc
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Contact: support@contrastsecurity.com
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 License: Commercial
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 NOTICE: This Software and the patented inventions embodied within may only be used as part of
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Contrast Security's commercial offerings. Even though it is made available through public
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 repositories, use of this Software is subject to the applicable End User Licensing Agreement
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 found at https://www.contrastsecurity.com/enduser-terms-0317a or as otherwise agreed between
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Contrast Security and the End User. The Software may not be reverse engineered, modified,
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 repackaged, sold, redistributed or otherwise used in a way not consistent with the End User
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 License Agreement.
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Telemetry opt-out is in effect or unsupported JVM, all telemetry collection is suppressed.
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Effective instructions: Assess=true, Protect=false, Observe=false
+[Contrast] Tue Oct 08 20:41:13 UTC 2024 Contrast logger configuration errors will be logged to stdout
+[Contrast] Tue Oct 08 20:41:24 UTC 2024 Starting JVM [13625ms]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v2.1.18.RELEASE)
+
+2024-10-08 20:41:25.758  INFO 1 --- [           main] c.c.testapp.WebFluxApplication           : Starting WebFluxApplication on 3882427c9213 with PID 1 (/spring-webflux-5/lib/spring-webflux-5.jar started by root in /)
+2024-10-08 20:41:25.768  INFO 1 --- [           main] c.c.testapp.WebFluxApplication           : No active profile set, falling back to default profiles: default
+2024-10-08 20:41:32.910  INFO 1 --- [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port(s): 8080
+2024-10-08 20:41:32.922  INFO 1 --- [           main] c.c.testapp.WebFluxApplication           : Started WebFluxApplication in 8.363 seconds (JVM running for 23.092)
+Begin Printing Thread Dump...
+"Reference Handler" daemon prio=10 Id=2 RUNNABLE
+	at java.base@11.0.19/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+	at java.base@11.0.19/java.lang.ref.Reference.processPendingReferences(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+	at java.base@11.0.19/java.lang.ref.Reference.processPendingReferences(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+
+
+"Finalizer" daemon prio=8 Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@106b1b66
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@106b1b66
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+
+"Signal Dispatcher" daemon prio=9 Id=4 RUNNABLE
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+
+
+"Common-Cleaner" daemon prio=8 Id=10 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@400ca2a8
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@400ca2a8
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/jdk.internal.ref.CleanerImpl.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at java.base@11.0.19/jdk.internal.misc.InnocuousThread.run(Unknown Source)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	at java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.base@11.0.19/jdk.internal.ref.CleanerImpl.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at java.base@11.0.19/jdk.internal.misc.InnocuousThread.run(Unknown Source)
+
+
+"Contrast IO Executor" daemon prio=2 Id=13 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@21b18f0d
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@21b18f0d
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"AMQP Connection 172.17.0.2:5672" prio=5 Id=14 RUNNABLE (in native)
+	at java.base@11.0.19/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base@11.0.19/java.net.SocketInputStream.socketRead(Unknown Source)
+	at java.base@11.0.19/java.net.SocketInputStream.read(Unknown Source)
+	at java.base@11.0.19/java.net.SocketInputStream.read(Unknown Source)
+	at java.base@11.0.19/java.io.BufferedInputStream.fill(Unknown Source)
+	at java.base@11.0.19/java.io.BufferedInputStream.read(Unknown Source)
+	-  locked java.io.BufferedInputStream@5ec745fa
+	at java.base@11.0.19/java.io.DataInputStream.readUnsignedByte(Unknown Source)
+	at app//com.contrastsecurity.thirdparty.com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base@11.0.19/java.net.SocketInputStream.socketRead(Unknown Source)
+	at java.base@11.0.19/java.net.SocketInputStream.read(Unknown Source)
+	at java.base@11.0.19/java.net.SocketInputStream.read(Unknown Source)
+	at java.base@11.0.19/java.io.BufferedInputStream.fill(Unknown Source)
+	at java.base@11.0.19/java.io.BufferedInputStream.read(Unknown Source)
+	at java.base@11.0.19/java.io.DataInputStream.readUnsignedByte(Unknown Source)
+	at app//com.contrastsecurity.thirdparty.com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at app//com.contrastsecurity.thirdparty.com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:164)
+	at app//com.contrastsecurity.thirdparty.com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:604)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"pool-2-thread-2" prio=5 Id=15 TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@7044e429
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@7044e429
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"com.contrastsecurity.thirdparty.Log4j2-AsyncAppenderEventDispatcher-3-CONTRAST_LOGGER" daemon prio=5 Id=19 TIMED_WAITING
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.dispatchAll(AsyncAppenderEventDispatcher.java:130)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.run(AsyncAppenderEventDispatcher.java:118)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.dispatchAll(AsyncAppenderEventDispatcher.java:130)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.run(AsyncAppenderEventDispatcher.java:118)
+
+
+"com.contrastsecurity.thirdparty.Log4j2-AsyncAppenderEventDispatcher-4-CONTRAST_SECURITY_LOGGER" daemon prio=5 Id=20 TIMED_WAITING
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.dispatchAll(AsyncAppenderEventDispatcher.java:130)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.run(AsyncAppenderEventDispatcher.java:118)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.dispatchAll(AsyncAppenderEventDispatcher.java:130)
+	at app//com.contrastsecurity.thirdparty.org.apache.logging.log4j.core.appender.AsyncAppenderEventDispatcher.run(AsyncAppenderEventDispatcher.java:118)
+
+
+"Contrast Application Updater" daemon prio=3 Id=16 TIMED_WAITING
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.AppInfoThread.run(AppInfoThread.java:27)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.AppInfoThread.run(AppInfoThread.java:27)
+
+
+"Contrast Application Activity Updater" daemon prio=3 Id=17 TIMED_WAITING
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.AppActivityThread.run(AppActivityThread.java:29)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.AppActivityThread.run(AppActivityThread.java:29)
+
+
+"Contrast Server Activity Updater" daemon prio=3 Id=18 TIMED_WAITING
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.ServerActivityThread.run(ServerActivityThread.java:16)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.ngreporting.PollingThread.run(PollingThread.java:68)
+	at app//com.contrastsecurity.agent.services.ngreporting.ServerActivityThread.run(ServerActivityThread.java:16)
+
+
+"Contrast API Reporting Service" daemon prio=2 Id=24 WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@5578116b
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@5578116b
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at app//com.contrastsecurity.thirdparty.lbmq.LinkedBlockingMultiQueue.take(LinkedBlockingMultiQueue.java:358)
+	at app//com.contrastsecurity.agent.services.reporting.ReportingQueueService.lambda$start$1(ReportingQueueService.java:123)
+	at app//com.contrastsecurity.agent.services.reporting.ReportingQueueService$$Lambda$342/0x0000000840413c40.run(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	...
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.ThreadPoolExecutor$Worker@1578fa9
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at app//com.contrastsecurity.thirdparty.lbmq.LinkedBlockingMultiQueue.take(LinkedBlockingMultiQueue.java:358)
+	at app//com.contrastsecurity.agent.services.reporting.ReportingQueueService.lambda$start$1(ReportingQueueService.java:123)
+	at app//com.contrastsecurity.agent.services.reporting.ReportingQueueService$$Lambda$342/0x0000000840413c40.run(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"Contrast Reporting" daemon prio=2 Id=25 TIMED_WAITING
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.services.ngreporting.LegacyReportingServiceImpl.lambda$start$0(LegacyReportingServiceImpl.java:158)
+	at app//com.contrastsecurity.agent.services.ngreporting.LegacyReportingServiceImpl$$Lambda$343/0x0000000840413440.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.services.ngreporting.LegacyReportingServiceImpl.lambda$start$0(LegacyReportingServiceImpl.java:158)
+	at app//com.contrastsecurity.agent.services.ngreporting.LegacyReportingServiceImpl$$Lambda$343/0x0000000840413440.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"Contrast Class Event Executor" daemon prio=2 Id=26 TIMED_WAITING
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.agent.libraries.ClassLoadEventBackgroundService.lambda$start$0(ClassLoadEventBackgroundService.java:51)
+	at app//com.contrastsecurity.agent.libraries.ClassLoadEventBackgroundService$$Lambda$344/0x0000000840412840.run(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.FutureTask.run(Unknown Source)
+	...
+
+	Number of locked synchronizers = 1
+	- java.util.concurrent.ThreadPoolExecutor$Worker@1b30a54e
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at app//com.contrastsecurity.agent.queues.lockfree.ConsumerWaitStrategies$WaitParked.idle(ConsumerWaitStrategies.java:34)
+	at app//com.contrastsecurity.agent.queues.lockfree.ContrastJ9MpscBlockingQueue.take(ContrastJ9MpscBlockingQueue.java:113)
+	at app//com.contrastsecurity.agent.libraries.ClassLoadEventBackgroundService.lambda$start$0(ClassLoadEventBackgroundService.java:51)
+	at app//com.contrastsecurity.agent.libraries.ClassLoadEventBackgroundService$$Lambda$344/0x0000000840412840.run(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"Contrast Cleanup" daemon prio=2 Id=27 TIMED_WAITING
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.PurgeThread.run(PurgeThread.java:110)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Thread.sleep(Native Method)
+	at app//com.contrastsecurity.agent.commons.SimpleSleeper.sleep(SimpleSleeper.java:12)
+	at app//com.contrastsecurity.agent.services.PurgeThread.run(PurgeThread.java:110)
+
+
+"reactor-http-nio-1" daemon prio=5 Id=31 RUNNABLE (in native)
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@781c352e
+	-  locked sun.nio.ch.EPollSelectorImpl@2338253e
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"server" prio=5 Id=32 WAITING on java.util.concurrent.CountDownLatch$Sync@740af8dc
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	-  waiting on java.util.concurrent.CountDownLatch$Sync@740af8dc
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.CountDownLatch.await(Unknown Source)
+	at app//reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:81)
+	at app//reactor.core.publisher.Mono.block(Mono.java:1507)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@11.0.19/java.util.concurrent.locks.LockSupport.park(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+	at java.base@11.0.19/java.util.concurrent.CountDownLatch.await(Unknown Source)
+	at app//reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:81)
+	at app//reactor.core.publisher.Mono.block(Mono.java:1507)
+	at app//org.springframework.boot.web.embedded.netty.NettyWebServer$1.run(NettyWebServer.java:121)
+
+
+"DestroyJavaVM" prio=5 Id=34 RUNNABLE
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+
+
+"reactor-http-nio-2" daemon prio=5 Id=35 RUNNABLE (in native)
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@616c5c7f
+	-  locked sun.nio.ch.EPollSelectorImpl@78c0a039
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"reactor-http-nio-3" daemon prio=5 Id=36 RUNNABLE (in native)
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@1ab36bca
+	-  locked sun.nio.ch.EPollSelectorImpl@39dcbc58
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"reactor-http-nio-4" daemon prio=5 Id=37 RUNNABLE (in native)
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@3a5080b8
+	-  locked sun.nio.ch.EPollSelectorImpl@47ec3ea3
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@11.0.19/sun.nio.ch.EPollSelectorImpl.doSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.lockAndDoSelect(Unknown Source)
+	at java.base@11.0.19/sun.nio.ch.SelectorImpl.select(Unknown Source)
+	at app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:805)
+	at app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.base@11.0.19/java.lang.ContrastRunnableWrapper.run(ContrastRunnableWrapper.java:41)
+	at app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"SIGTERM handler" daemon prio=9 Id=38 WAITING on com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread@7739aac4
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	-  waiting on com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread@7739aac4
+	at java.base@11.0.19/java.lang.Thread.join(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.join(Unknown Source)
+	at java.base@11.0.19/java.lang.ApplicationShutdownHooks.runHooks(Unknown Source)
+	at java.base@11.0.19/java.lang.ApplicationShutdownHooks$1.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Shutdown.runHooks(Unknown Source)
+	at java.base@11.0.19/java.lang.Shutdown.exit(Unknown Source)
+	-  locked java.lang.Class@de0a01f
+	at java.base@11.0.19/java.lang.Terminator$1.handle(Unknown Source)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.lang.Object.wait(Native Method)
+	at java.base@11.0.19/java.lang.Thread.join(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.join(Unknown Source)
+	at java.base@11.0.19/java.lang.ApplicationShutdownHooks.runHooks(Unknown Source)
+	at java.base@11.0.19/java.lang.ApplicationShutdownHooks$1.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Shutdown.runHooks(Unknown Source)
+	at java.base@11.0.19/java.lang.Shutdown.exit(Unknown Source)
+	at java.base@11.0.19/java.lang.Terminator$1.handle(Unknown Source)
+	at java.base@11.0.19/jdk.internal.misc.Signal$1.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+
+
+"Contrast Agent Print Thread Dump On Shutdown" daemon prio=2 Id=22 RUNNABLE
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at app//com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils.printThreadDump(DebugUtils.java:30)
+	at app//com.contrastsecurity.agent.startup.PrintThreadDumpOnShutdownStartupTask.lambda$onStartupEnd$0(PrintThreadDumpOnShutdownStartupTask.java:33)
+	at app//com.contrastsecurity.agent.startup.PrintThreadDumpOnShutdownStartupTask$$Lambda$327/0x0000000840410440.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at java.management@11.0.19/sun.management.ThreadImpl.dumpAllThreads(Unknown Source)
+	at app//com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils.printThreadDump(DebugUtils.java:30)
+	at app//com.contrastsecurity.agent.startup.PrintThreadDumpOnShutdownStartupTask.lambda$onStartupEnd$0(PrintThreadDumpOnShutdownStartupTask.java:33)
+	at app//com.contrastsecurity.agent.startup.PrintThreadDumpOnShutdownStartupTask$$Lambda$327/0x0000000840410440.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"Contrast Agent Shutdown Cleanup" daemon prio=2 Id=21 RUNNABLE
+	at java.base@11.0.19/java.util.stream.ReferencePipeline.mapToInt(Unknown Source)
+	at app//com.contrastsecurity.agent.core.CompositeBackgroundService.countBlockingOnStopServices(CompositeBackgroundService.java:289)
+	at app//com.contrastsecurity.agent.core.CompositeBackgroundService.stop(CompositeBackgroundService.java:94)
+	at app//com.contrastsecurity.agent.core.ContrastEngine.stop(ContrastEngine.java:408)
+	-  locked com.contrastsecurity.agent.core.ContrastEngine@4680f0af
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask.stopAgent(AddShutdownCleanupTask.java:60)
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask.lambda$onStartupEnd$0(AddShutdownCleanupTask.java:31)
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask$$Lambda$326/0x0000000840410040.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	...
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at java.base@11.0.19/java.util.stream.ReferencePipeline.mapToInt(Unknown Source)
+	at app//com.contrastsecurity.agent.core.CompositeBackgroundService.countBlockingOnStopServices(CompositeBackgroundService.java:289)
+	at app//com.contrastsecurity.agent.core.CompositeBackgroundService.stop(CompositeBackgroundService.java:94)
+	at app//com.contrastsecurity.agent.core.ContrastEngine.stop(ContrastEngine.java:408)
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask.stopAgent(AddShutdownCleanupTask.java:60)
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask.lambda$onStartupEnd$0(AddShutdownCleanupTask.java:31)
+	at app//com.contrastsecurity.agent.startup.AddShutdownCleanupTask$$Lambda$326/0x0000000840410040.run(Unknown Source)
+	at java.base@11.0.19/java.lang.Thread.run(Unknown Source)
+	at app//com.contrastsecurity.agent.scope.ScopingThreadFactory$ScopingThread.run(ScopingThreadFactory.java:86)
+
+
+"Thread-10" prio=5 Id=33 RUNNABLE
+	at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:517)
+	-  locked java.util.LinkedHashMap@1ae2ba5b
+	at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1054)
+	at app//org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1058)
+	at app//org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1027)
+	at app//org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:946)
+	-  locked java.lang.Object@2489acff
+
+com.contrastsecurity.agent.plugins.frameworks.debugging.DebugUtils$FullStackTracePrinter
+	at app//org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:517)
+	at app//org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1054)
+	at app//org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1058)
+	at app//org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1027)
+	at app//org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:946)
+
+
+Finished Printing Thread Dump.
