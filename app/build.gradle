@@ -13,7 +13,6 @@ repositories {
 
 dependencies {
     implementation 'org.apache.commons:commons-text'
-    implementation 'info.picocli:picocli'
     implementation project(':utilities')
 }
 
