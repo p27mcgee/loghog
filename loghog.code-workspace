@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../debug-log/src/python/logdb"
+		}
+	]
+}
