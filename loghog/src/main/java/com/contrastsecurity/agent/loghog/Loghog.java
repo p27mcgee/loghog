@@ -23,7 +23,7 @@ public class Loghog {
 
     static void dbstuff() throws SQLException {
 
-        final String storagePath = "~.h2/testdb";
+        final String storagePath = "~/.h2/testdb";
         Connection connection = H2Database.openDatabase(storagePath);
 
         Statement statement = null;
