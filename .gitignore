@@ -3,3 +3,10 @@
 
 # Ignore Gradle build output directory
 build
+
+.idea
+
+logs/wf-fail-reports
+logs/11297893277
+
+.DS_Store
