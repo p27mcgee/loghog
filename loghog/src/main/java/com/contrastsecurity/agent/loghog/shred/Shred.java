@@ -1,199 +1,149 @@
 package com.contrastsecurity.agent.loghog.shred;
 
+import com.contrastsecurity.agent.loghog.sql.SqlTable;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class Shred {
+public abstract class Shred {
     public static final String DEFAULT_TYPE = "default";
+    public static final boolean SHOW_PROGRESS = false;
+    public static final boolean SHOW_MISFITS = false;
+    public static final boolean VERBOSE = false;
 
-    private String tblName;
-    private String createTblSql;
-    private List<String> tblIndexSqls;
-    private String misfitsTblName;
-    private String createMisfitsSql;
-    private List<String> misfitsIndexSqls;
-    private String dropTblSql;
-    private String dropMisfitsSql;
-    private final boolean showMisfits;
 
-    public Shred(String tblName, String createTblSql, List<String> tblIndexSqls,
-                 String misfitsTblName, String createMisfitsSql, final boolean showMisfits) {
-        this.tblName = tblName;
-        this.createTblSql = createTblSql;
-        this.tblIndexSqls = tblIndexSqls != null ? tblIndexSqls : List.of();
-        this.dropTblSql = "drop table if exists " + this.tblName;
-        if (misfitsTblName == null) {
-            this.misfitsTblName = tblName + "_misfits";
-        } else {
-            this.misfitsTblName = misfitsTblName;
-        }
-        if (createMisfitsSql == null) {
-            this.createMisfitsSql = "create table " + this.misfitsTblName + "( line integer primary key references log(line))";
-        } else {
-            this.createMisfitsSql = createMisfitsSql;
-        }
-        this.misfitsIndexSqls = misfitsIndexSqls != null ? misfitsIndexSqls : List.of();
-        this.dropMisfitsSql = "drop table if exists " + this.misfitsTblName;
-        this.showMisfits = showMisfits;
+    private final SqlTable shredTable;
+    private final SqlTable shredMisfitsTable;
+
+    private ShredEntrySelector entrySelector;
+    private ShredEntryClassifier entryClassifier;
+    private ShredValueExtractor valueExtractor;
+
+//        if (misfitsTblName == null) {
+//            this.misfitsTblName = tblName + "_misfits";
+//        } else {
+//            this.misfitsTblName = misfitsTblName;
+//        }
+//        if (createMisfitsSql == null) {
+//            this.createMisfitsSql = "create table " + this.misfitsTblName + "( line integer primary key references log(line))";
+//        } else {
+//            this.createMisfitsSql = createMisfitsSql;
+//        }
+
+
+    public Shred(SqlTable shredTable, SqlTable shredMisfitsTable, ShredEntrySelector entrySelector,
+                 ShredEntryClassifier entryClassifier, ShredValueExtractor valueExtractor ) {
+        this.shredTable = shredTable;
+        this.shredMisfitsTable = shredMisfitsTable;
+        this.entrySelector = entrySelector;
+        this.entryClassifier = entryClassifier;
+        this.valueExtractor = valueExtractor;
     }
 
-    public void createTables(Connection connection) {
-        createEmptyTable(connection);
-        createEmptyMisfitsTable(connection);
-        populate_tables(connection);
+    public void createTables(Connection connection) throws SQLException {
+        createEmptyTable(connection, shredTable);
+        createEmptyTable(connection, shredMisfitsTable);
+        populateShredTables(connection);
     }
 
-    // TODO recreate or keep
-    protected void createEmptyTable(Connection connection) throws SQLException {
+    // TODO recreate or keep?
+    public static void createEmptyTable(Connection connection, SqlTable sqlTable) throws SQLException {
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute(dropTblSql);
-            stmt.execute(createTblSql);
-            for (String indexSql : tblIndexSqls) {
+            stmt.execute(sqlTable.dropTblSql());
+            stmt.execute(sqlTable.createTableSql());
+            for (String indexSql : sqlTable.indexTableSql()) {
                 stmt.execute(indexSql);
             }
         }
     }
 
-    // TODO recreate or keep
-    protected void createEmptyMisfitsTable(Connection connection) throws SQLException {
-        if (misfitsTblName != null && !misfitsTblName.isEmpty()) {
-            try (Statement stmt = connection.createStatement()) {
-                stmt.execute(dropMisfitsSql);
-                stmt.execute(createMisfitsSql);
-                for (String indexSql : misfitsIndexSqls) {
-                    stmt.execute(indexSql);
+    abstract Object[] transformValues(int line, String entry, String patternId, Map<String, Object> extractedVals);
+
+    abstract Object[] transformMisfits(int line, int lastGoodLine);
+
+    public void populateShredTables(Connection connection) throws SQLException {
+        int totalAdded = 0;
+        int totalMisfits = 0;
+        int lastGoodLine = -1;
+        if (VERBOSE) {
+            System.out.println("Shredding to " + shredTable.name() + "...");
+        }
+        for (List<Object[]> rows : entrySelector.selectBatches(connection)) {
+            if (VERBOSE && SHOW_PROGRESS) {
+                System.out.print(".");
+            }
+            int[] results = addRows(rows, lastGoodLine, connection);
+            int nAdded = results[0];
+            int nMisfits = results[1];
+            lastGoodLine = results[2];
+            totalAdded += nAdded;
+            totalMisfits += nMisfits;
+        }
+        if (VERBOSE) {
+            if (SHOW_PROGRESS) {
+                System.out.println("\n");
+            }
+            System.out.println("Added " + totalAdded + " rows to table " + shredTable.name());
+            System.out.println("Added " + totalMisfits + " rows to table " + shredMisfitsTable.name());
+        }
+    }
+
+    protected int[] addRows(List<Object[]> logRows, int lastGoodLine, Connection connection) throws SQLException {
+        List<Object[]> values = new ArrayList<>();
+        List<Object[]> misfits = new ArrayList<>();
+        int nAdded = 0;
+        int nMisfits = 0;
+
+        try (PreparedStatement insertStmt = connection.prepareStatement(shredTable.insertRowSql());
+             PreparedStatement insertMisfitsStmt = connection.prepareStatement(shredMisfitsTable.insertRowSql())) {
+            connection.setAutoCommit(false);
+
+            for (Object[] row : logRows) {
+                int line = (int) row[0];
+                String entry = (String) row[1];
+                String patternId = entryClassifier.findPattern(entry);
+                try {
+                    Map<String, Object> extractedVals = valueExtractor.extractValues(patternId, entry);
+                    Object[]  insertVals = transformValues(line, entry, patternId, extractedVals);
+                    values.add(insertVals);
+                    lastGoodLine = line;
+                    nAdded++;
+                } catch (Exception e) {
+                    if (SHOW_MISFITS == false) {
+                        System.out.println("Extraction/transformation failed in entry line " + line + ": " + entry);
+                    }
+                    Object[] misfitVals = this.transformMisfits(line, lastGoodLine);
+                    misfits.add(misfitVals);
+                    nMisfits++;
                 }
             }
-        }
-    }
 
-    public Shred(final boolean showMisfits) {
-        this.showMisfits = showMisfits;
-    }
-
-    static class ShredEntryClassifier {
-        private Map<String, Object> patternSignatures;
-        public static final String DEFAULT_PATTERN_ID = "default";
-
-        public ShredEntryClassifier() {
-            this(null);
-        }
-
-        public ShredEntryClassifier(Map<String, Object> typeSignatures) {
-            if (typeSignatures == null) {
-                this.patternSignatures = new HashMap<>();
-                this.patternSignatures.put(DEFAULT_PATTERN_ID, "");
-            } else {
-                this.patternSignatures = typeSignatures;
-            }
-        }
-
-        public String findPatternId(String entry) {
-            for (Map.Entry<String, Object> typeSignature : patternSignatures.entrySet()) {
-                String type = typeSignature.getKey();
-                Object signature = typeSignature.getValue();
-                if (signature instanceof List) {
-                    boolean isType = true;
-                    for (String part : (List<String>) signature) {
-                        if (!entry.contains(part)) {
-                            isType = false;
-                            break;
-                        }
-                    }
-                    if (isType) {
-                        return type;
-                    }
-                } else {
-                    if (entry.contains((String) signature)) {
-                        return type;
-                    }
+            for (Object[] value : values) {
+                for (int i = 0; i < value.length; i++) {
+                    insertStmt.setObject(i + 1, value[i]);
                 }
+                insertStmt.addBatch();
             }
-            return DEFAULT_PATTERN_ID;
-        }
-    }
+            insertStmt.executeBatch();
 
-    public static class ShredEntrySelector {
-        public static final String ALL_ENTRIES_SIGNATURE = "";
-        public static final String ALL_ENTRIES_SQL = "select line, entry from log";
-        private String entrySignature;
-        private String selectEntriesSql;
-        private int batchSize;
-
-        public ShredEntrySelector(String entrySignature, String selectEntriesSql, int batchSize) {
-            if (entrySignature == null) {
-                this.entrySignature = "";
-            } else {
-                this.entrySignature = entrySignature;
-            }
-            if (selectEntriesSql == null) {
-                this.selectEntriesSql = "select line, entry from log where entry like '%" + this.entrySignature + "%'";
-            } else {
-                this.selectEntriesSql = selectEntriesSql;
-            }
-            this.batchSize = batchSize;
-        }
-
-        public List<List<Object[]>> selectBatches(Connection connection) throws SQLException {
-            List<List<Object[]>> batches = new ArrayList<>();
-            try (PreparedStatement stmt = connection.prepareStatement(this.selectEntriesSql)) {
-                ResultSet rs = stmt.executeQuery();
-                while (true) {
-                    List<Object[]> rows = new ArrayList<>();
-                    for (int i = 0; i < this.batchSize && rs.next(); i++) {
-                        rows.add(new Object[]{rs.getInt("line"), rs.getString("entry")});
-                    }
-                    if (rows.isEmpty()) {
-                        break;
-                    }
-                    batches.add(rows);
+            for (Object[] misfit : misfits) {
+                for (int i = 0; i < misfit.length; i++) {
+                    insertMisfitsStmt.setObject(i + 1, misfit[i]);
                 }
+                insertMisfitsStmt.addBatch();
             }
-            return batches;
+            insertMisfitsStmt.executeBatch();
+
+            connection.commit();
         }
+
+        return new int[]{nAdded, nMisfits, lastGoodLine};
     }
 
-    static class ShredValueExtractor {
-        private List<String> extractedValNames;
-        private Map<String, Pattern> valueExtractors;
-        public static final String DEFAULT_PATTERN_ID = "default";
-
-        public ShredValueExtractor(List<String> extractedValNames, Map<String, Pattern> valueExtractors) {
-            if (extractedValNames == null) {
-                this.extractedValNames = new ArrayList<>();
-            } else {
-                this.extractedValNames = extractedValNames;
-            }
-            if (valueExtractors == null) {
-                this.valueExtractors = new HashMap<>();
-                this.valueExtractors.put(DEFAULT_PATTERN_ID, Pattern.compile(""));
-            } else {
-                this.valueExtractors = valueExtractors;
-            }
-        }
-
-        public Map<String, String> extractValues(String patternId, String entry) {
-            Map<String, String> extractedVals = new HashMap<>();
-            Pattern extractor = this.valueExtractors.get(patternId);
-            if (extractor != null) {
-                Matcher match = extractor.matcher(entry);
-                if (match.find()) {
-                    for (String extractedValName : this.extractedValNames) {
-                        extractedVals.put(extractedValName, match.group(extractedValName));
-                    }
-                }
-            }
-            return extractedVals;
-        }
-    }
 }
 
