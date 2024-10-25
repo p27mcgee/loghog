@@ -46,13 +46,14 @@ public class Shred {
         this.showMisfits = showMisfits;
     }
 
-    public void initialize_tables(Connection connection) {
-            create_empty_table(connection);
-            create_empty_misfits_table(connection);
-            populate_tables(connection);
+    public void createTables(Connection connection) {
+        createEmptyTable(connection);
+        createEmptyMisfitsTable(connection);
+        populate_tables(connection);
     }
 
-    public void createEmptyTable(Connection connection) throws SQLException {
+    // TODO recreate or keep
+    protected void createEmptyTable(Connection connection) throws SQLException {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(dropTblSql);
             stmt.execute(createTblSql);
@@ -62,7 +63,8 @@ public class Shred {
         }
     }
 
-    public void createEmptyMisfitsTable(Connection connection) throws SQLException {
+    // TODO recreate or keep
+    protected void createEmptyMisfitsTable(Connection connection) throws SQLException {
         if (misfitsTblName != null && !misfitsTblName.isEmpty()) {
             try (Statement stmt = connection.createStatement()) {
                 stmt.execute(dropMisfitsSql);

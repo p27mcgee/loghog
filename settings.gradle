@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = 'loghog'
-include('loghog', 'list', 'utilities')
+include('loghog')
