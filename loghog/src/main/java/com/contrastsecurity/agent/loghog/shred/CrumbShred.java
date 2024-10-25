@@ -33,9 +33,9 @@ public class CrumbShred extends Shred {
     }};
     public static final ShredEntryClassifier ENTRY_CLASSIFIER = new ShredEntryClassifier(TYPE_SIGNATURES);
 
-    public static final List<String> EXTRACTED_VAL_NAMES = Arrays.asList("req", "resp", "url", "crumbthread", "crumbtime", "stackframe");
+    public static final List<String> EXTRACTED_VAL_NAMES = Arrays.asList("req", "resp", "url", "crumbthread", "log_timestamp", "stackframe");
     public static final Map<String, Pattern> VALUE_EXTRACTORS = new HashMap<String, Pattern>() {{
-        put("hist_req_begin", Pattern.compile("(?<crumbtime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<crumbthread>\\S+) \\S+] DEBUG - CRUMB request@(?<req>\\S+) (?<url>\\S+)\\t\\t\\tBEGIN.+(?<resp>~NORESP~)?(?<stackframe>~NOFRAME~)?$"));
+        put("hist_req_begin", Pattern.compile(LOG_TIMESTAMP_EXTRACTOR + " " + LOG_THREAD_EXTRACTOR + " " + LOG_LEVEL_DEBUG + " -  CRUMB request@(?<req>\\S+) (?<url>\\S+)\\t\\t\\tBEGIN.+(?<resp>~NORESP~)?(?<stackframe>~NOFRAME~)?$"));
         put("req_begin", Pattern.compile("(?<crumbtime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<crumbthread>\\S+) \\S+] DEBUG - CRUMB request@(?<req>\\S+) (?<url>\\S+)\\t\\tBEGIN.+(?<resp>~NORESP~)?(?<stackframe>~NOFRAME~)?$"));
         put("hist_resp_begin", Pattern.compile("(?<crumbtime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<crumbthread>\\S+) \\S+] DEBUG - CRUMB response@(?<resp>\\S+) \\t\\t\\tBEGIN.+(?<req>~NOREQ~)?(?<url>~NOURL~)?(?<stackframe>~NOFRAME~)?$"));
         put("resp_begin", Pattern.compile("(?<crumbtime>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<crumbthread>\\S+) \\S+] DEBUG - CRUMB response@(?<resp>\\S+) \\t\\tBEGIN.+(?<req>~NOREQ~)?(?<url>~NOURL~)?(?<stackframe>~NOFRAME~)?$"));
