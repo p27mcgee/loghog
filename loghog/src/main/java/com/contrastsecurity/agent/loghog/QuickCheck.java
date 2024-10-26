@@ -54,10 +54,10 @@ public class QuickCheck {
 
         String logname = args[0];
         try {
-            Connection connection = CreateDb.main(logname);
-            new MesgShred().initializeTables(connection);
+            Connection connection = CreateDb.connectDb(logname);
+            new MesgShred().createTables(connection);
             reportTells(connection);
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

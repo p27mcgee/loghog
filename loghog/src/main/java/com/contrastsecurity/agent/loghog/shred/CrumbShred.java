@@ -56,9 +56,11 @@ create table crumb(
         put("req_end", Arrays.asList("request@", "END & HISTORY:"));
         put("resp_end", Arrays.asList("response@", "END & HISTORY:"));
     }};
-    public static final ShredEntryClassifier ENTRY_CLASSIFIER = new ShredEntryClassifier(PATTERN_SIGNATURES);
+    public static final ShredEntryClassifier ENTRY_CLASSIFIER =
+            new ShredEntryClassifier(PATTERN_SIGNATURES);
 
-    public static final List<String> EXTRACTED_VAL_NAMES = Arrays.asList(REQ_VAR, RESP_VAR, URL_VAR, LOG_THREAD_VAR, LOG_TIMESTAMP_VAR, STACKFRAME_VAR);
+    public static final List<String> EXTRACTED_VAL_NAMES =
+            Arrays.asList(REQ_VAR, RESP_VAR, URL_VAR, LOG_THREAD_VAR, LOG_TIMESTAMP_VAR, STACKFRAME_VAR);
     public static final Map<String, Pattern> VALUE_EXTRACTORS = new HashMap<String, Pattern>() {{
         put("hist_req_begin", Pattern.compile(DEBUG_PREAMBLE_XTRACT +
                 "- CRUMB " + REQ_XTRACT + " " + URL_XTRACT +
@@ -79,8 +81,7 @@ create table crumb(
                 " END & HISTORY:" +
                 NO_RESP_XTRACT + NO_STACKFRAME_XTRACT + "$"));
         put("resp_end", Pattern.compile(DEBUG_PREAMBLE_XTRACT +
-                "- CRUMB " + RESP_XTRACT + // " " ?
-                " END & HISTORY:" +
+                "- CRUMB " + RESP_XTRACT + " END & HISTORY:" +
                 NO_REQ_XTRACT + NO_URL_XTRACT + NO_STACKFRAME_XTRACT + "$"));
         put(Shred.DEFAULT_TYPE, Pattern.compile("^~NOMATCH~$"));
     }};
@@ -92,6 +93,5 @@ create table crumb(
             "create table crumb_misfits(" +
                     "line integer primary key references log(line))";
     public static final List<String> MISFITS_TBL_INDEX_SQLS = List.of();
-    public static final List<String> MISFITS_TBL_COLUMNS = Arrays.asList("line", "mesg");
-
+    public static final List<String> MISFITS_TBL_COLUMNS = Arrays.asList("line");
 }

@@ -1,11 +1,9 @@
 package com.contrastsecurity.agent.loghog;
 
 import com.contrastsecurity.agent.loghog.db.CreateDb;
-import com.contrastsecurity.agent.loghog.shred.AmqpShred;
-import com.contrastsecurity.agent.loghog.shred.CrumbShred;
-import com.contrastsecurity.agent.loghog.shred.LmclShred;
-import com.contrastsecurity.agent.loghog.shred.MesgShred;
+import com.contrastsecurity.agent.loghog.shred.*;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,11 +22,11 @@ public class CreateFullDb {
 
         try {
             Connection connection = CreateDb.createLogDb(debugLog, debugDb);
-            new MesgShred().initializeTables(connection);
-            new LmclShred().initializeTables(connection);
-            new AcelShred().initializeTables(connection);
-            new AmqpShred().initializeTables(connection);
-            new CrumbShred().initializeTables(connection);
+            new MesgShred().createTables(connection);
+            new LmclShred().createTables(connection);
+            new AcelShred().createTables(connection);
+            new AmqpShred().createTables(connection);
+            new CrumbShred().createTables(connection);
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }

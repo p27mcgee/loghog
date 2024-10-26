@@ -1,48 +1,23 @@
 package com.contrastsecurity.agent.loghog.shred;
 
+import com.contrastsecurity.agent.loghog.sql.SqlTableBase;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class LmclShred extends Shred {
-    public static final String TBL_NAME = "lmcl";
-    public static final String CREATE_TBL_SQL =
-            "create table lmcl(" +
-                    "line integer primary key references log(line)," +
-                    "class text not null," +
-                    "package text not null," +
-                    "result text," +
-                    "location text," +
-                    "adapters text)";
-    public static final List<String> TBL_INDEX_SQLS = Arrays.asList(
-            "create index idx_lmcl_package on lmcl(package)",
-            "create index idx_lmcl_class_package on lmcl(class, package)"
-    );
-    public static final ShredTableCreator TBL_CREATOR = new ShredTableCreator(TBL_NAME, CREATE_TBL_SQL, TBL_INDEX_SQLS);
-
-    public static final String ENTRY_SIGNATURE = "!LM!ClassLoad|";
-    public static final ShredEntrySelector ENTRY_SELECTOR = new ShredEntrySelector(ENTRY_SIGNATURE);
-
-    public static final ShredEntryClassifier ENTRY_CLASSIFIER = new ShredEntryClassifier();
-
-    public static final List<String> EXTRACTED_VAL_NAMES = Arrays.asList("fqcn", "result", "adapters", "location");
-    public static final Map<String, Pattern> VALUE_EXTRACTORS = new HashMap<String, Pattern>() {{
-        put(Shred.DEFAULT_TYPE, Pattern.compile(
-                "!LM!ClassLoad\\|(?<fqcn>[^|]+)\\|result=(?<result>[^&]+)&adapters=(?<adapters>[^&]*)&location=(?<location>.*)$"
-        ));
-    }};
-    public static final ShredValueExtractor VALUE_EXTRACTOR = new ShredValueExtractor(EXTRACTED_VAL_NAMES, VALUE_EXTRACTORS);
-
-    public static final List<String> INSERT_COLUMNS = Arrays.asList("line", "class", "package", "result", "location", "adapters");
 
     public LmclShred() {
-        super(TBL_CREATOR, ENTRY_SELECTOR, ENTRY_CLASSIFIER, VALUE_EXTRACTOR, INSERT_COLUMNS);
+        super(new SqlTableBase(LMCL_TBL_NAME, LMCL_TBL_CREATE_SQL, LMCL_TBL_INDEX_SQLS, LMCL_TBL_COLUMNS),
+                new SqlTableBase(MISFITS_TBL_NAME, MISFITS_TBL_CREATE_SQL, MISFITS_TBL_INDEX_SQLS, MISFITS_TBL_COLUMNS),
+                ENTRY_SELECTOR, ENTRY_CLASSIFIER, VALUE_EXTRACTOR);
     }
 
     @Override
-    public Object[] transformValues(int line, String entry, String type, Map<String, String> extractedVals) {
-        String[] classAndPackage = classAndPackage(extractedVals.get("fqcn"));
+    public Object[] transformValues(int line, String entry, String type, Map<String, Object> extractedVals) {
+        String[] classAndPackage = classAndPackage((String)extractedVals.get("fqcn"));
         String classname = classAndPackage[0];
         String packageName = classAndPackage[1];
         return new Object[] { line, classname, packageName, extractedVals.get("result"), extractedVals.get("location"), extractedVals.get("adapters") };
@@ -58,17 +33,50 @@ public class LmclShred extends Shred {
         return new String[] { classname, packageName };
     }
 
-    public static void main(String[] args) {
-        String logname = "sb-san-petclinic";
-        if (args.length > 0) {
-            logname = args[0];
-        }
-        String debugDb = logname + ".db";
-        try (Connection connection = createdb.connectdb(debugDb)) {
-            LmclShred lmclShred = new LmclShred();
-            lmclShred.initializeTables(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public Object[] transformMisfits(int line, int lastGoodLine) {
+        return new Object[] {line};
     }
+
+    // Shred table "lmcl" (class load)
+    public static final String LMCL_TBL_NAME = "lmcl";
+    public static final String LMCL_TBL_CREATE_SQL =
+            "create table lmcl(" +
+                    "line integer primary key references log(line)," +
+                    "class text not null," +
+                    "package text not null," +
+                    "result text," +
+                    "location text," +
+                    "adapters text)";
+    public static final List<String> LMCL_TBL_INDEX_SQLS = Arrays.asList(
+            "create index idx_lmcl_package on lmcl(package)",
+            "create index idx_lmcl_class_package on lmcl(class, package)"
+    );
+    public static final List<String> LMCL_TBL_COLUMNS =
+            Arrays.asList("line", "class", "package", "result", "adapters");
+
+    public static final String ENTRY_SIGNATURE = "!LM!ClassLoad|";
+    public static final ShredEntrySelector ENTRY_SELECTOR =
+            new ShredEntrySelector(ENTRY_SIGNATURE);
+
+    public static final ShredEntryClassifier ENTRY_CLASSIFIER =
+            new ShredEntryClassifier();
+
+    public static final List<String> EXTRACTED_VAL_NAMES =
+            Arrays.asList("fqcn", "result", "adapters", "location");
+    public static final Map<String, Pattern> VALUE_EXTRACTORS =
+            new HashMap<String, Pattern>() {{
+        put(Shred.DEFAULT_TYPE, Pattern.compile(
+                "!LM!ClassLoad\\|(?<fqcn>[^|]+)\\|result=(?<result>[^&]+)&adapters=(?<adapters>[^&]*)&location=(?<location>.*)$"
+        ));
+    }};
+    public static final ShredValueExtractor VALUE_EXTRACTOR = new ShredValueExtractor(EXTRACTED_VAL_NAMES, VALUE_EXTRACTORS);
+
+    // Shred misfits table "lmcl_misfits"
+    public static final String MISFITS_TBL_NAME = "lmcl_misfits";
+    public static final String MISFITS_TBL_CREATE_SQL =
+            "create table lmcl_misfits(" +
+                    "line integer primary key references log(line))";
+    public static final List<String> MISFITS_TBL_INDEX_SQLS = List.of();
+    public static final List<String> MISFITS_TBL_COLUMNS = Arrays.asList("line");
 }
