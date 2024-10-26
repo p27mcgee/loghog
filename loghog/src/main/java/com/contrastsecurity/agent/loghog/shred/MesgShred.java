@@ -5,6 +5,7 @@ import com.contrastsecurity.agent.loghog.sql.SqlTableBase;
 import java.util.*;
 import java.util.regex.Pattern;
 
+import static com.contrastsecurity.agent.loghog.shred.PatternGroup.*;
 import static com.contrastsecurity.agent.loghog.shred.ShredEntrySelector.ALL_ENTRIES_SIGNATURE;
 import static com.contrastsecurity.agent.loghog.shred.ShredEntrySelector.ALL_ENTRIES_SQL;
 
@@ -56,12 +57,11 @@ create table mesg(
     public static final ShredEntryClassifier ENTRY_CLASSIFIER = new ShredEntryClassifier();
 
     public static final List<String> EXTRACTED_VAL_NAMES =
-            Arrays.asList("timestamp", "thread", "logger", "level", "message");
+            Arrays.asList(LOG_TIMESTAMP_VAR, LOG_THREAD_VAR, LOG_LOGGER_VAR, LOG_LEVEL_VAR, "message");
     public static final Map<String, Pattern> VALUE_EXTRACTORS =
             new HashMap<String, Pattern>() {{
-                put(Shred.DEFAULT_TYPE, Pattern.compile(
-                        "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<thread>.+) (?<logger>\\S+)\\] (?<level>\\S+) -( (?<message>.*))?$"
-                ));
+                put(Shred.DEFAULT_TYPE,
+                        Pattern.compile(FULL_PREAMBLE_XTRACT + "-( (?<message>.*))?$"));
             }};
     public static final ShredValueExtractor VALUE_EXTRACTOR =
             new ShredValueExtractor(EXTRACTED_VAL_NAMES, VALUE_EXTRACTORS);

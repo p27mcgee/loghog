@@ -19,6 +19,12 @@ public class ShredEntrySelector {
         this(ALL_ENTRIES_SIGNATURE, ALL_ENTRIES_SQL, DEFAULT_BATCH_SIZE);
     }
 
+    public ShredEntrySelector(String entrySignature) {
+        this(entrySignature,
+                "select line, entry from log where entry like '%" + entrySignature + "%'",
+                DEFAULT_BATCH_SIZE);
+    }
+
     public ShredEntrySelector(String entrySignature, String selectEntriesSql, int batchSize) {
         if (entrySignature == null) {
             entrySignature = ALL_ENTRIES_SIGNATURE;
