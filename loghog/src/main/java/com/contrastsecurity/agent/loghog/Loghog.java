@@ -1,60 +1,57 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog;
 
-import com.contrastsecurity.agent.loghog.db.H2Database;
-
+import com.contrastsecurity.agent.loghog.db.EmbeddedDatabaseFactory;
+import com.contrastsecurity.agent.loghog.db.LogDatabaseUtil;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Loghog {
 
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("loghog requires a comand line argument specifying the path to a log file to load, e.g.: ");
+            System.out.println(
+                    "loghog requires a comand line argument specifying the path to a log file to"
+                            + " load, e.g.: ");
             System.out.println("java -jar loghog-all.jar ~/logs/some-log.err");
+            System.exit(1);
         }
-        try {
-            dbstuff();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        final String logFilepath = args[0];
+        final File logFile = new File(logFilepath);
+        if (!logFile.exists() || !logFile.isFile() || !logFile.canRead()) {
+            System.out.println("Log file does not exist or is not readable: " + logFilepath);
+            System.exit(2);
         }
+        System.out.println("Parsing Java Agent log file: " + logFilepath);
+
+        final String dbFilepath;
+        if (args.length < 2) {
+            dbFilepath = logFilepath.substring(0, logFilepath.lastIndexOf('.')) + ".db";
+            System.out.println("Using default database file: " + dbFilepath);
+        } else {
+            dbFilepath = args[1];
+            System.out.println("Using specified database file: " + dbFilepath);
+        }
+        final File dbFile = new File(dbFilepath);
+        if (!dbFile.canWrite()) {
+            System.out.println("Database file is not writable: " + dbFilepath);
+            System.exit(3);
+        }
+        createAndPopulateDb(logFilepath, dbFilepath);
     }
 
-    static void dbstuff() throws SQLException {
-
-        final String storagePath = "~/.h2/testdb";
-        Connection connection = H2Database.openDatabase(storagePath);
-
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            // Create a statement
-            statement = connection.createStatement();
-
-            // Execute a query
-            String sql = "CREATE TABLE IF NOT EXISTS daleks (id INT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY (id))";
-            statement.execute(sql);
-
-            // Insert a record
-            sql = "INSERT INTO daleks (name) VALUES ('John Doe')";
-            statement.executeUpdate(sql);
-
-            // Query the database
-            sql = "SELECT * FROM daleks";
-            resultSet = statement.executeQuery(sql);
-
-            // Process the result set
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                System.out.println("ID: " + id + ", Name: " + name);
-            }
-        } catch (final SQLException e) {
+    public static void createAndPopulateDb(final String logFilepath, final String dbFilepath) {
+        try (final Connection connection = EmbeddedDatabaseFactory.create(dbFilepath)) {
+            LogDatabaseUtil.initializeLogTable(connection, logFilepath);
+            //            new MesgShred().createTables(connection);
+            //            new LmclShred().createTables(connection);
+            //            new AcelShred().createTables(connection);
+            //            new AmqpShred().createTables(connection);
+            //            new CrumbShred().createTables(connection);
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
-        } finally {
-            H2Database.closeDatabase(connection, statement, resultSet);
         }
     }
-
 }

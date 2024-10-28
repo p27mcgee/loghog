@@ -1,3 +1,4 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.shred;
 
 import java.util.HashMap;

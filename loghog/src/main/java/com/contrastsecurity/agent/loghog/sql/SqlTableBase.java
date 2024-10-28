@@ -1,3 +1,4 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.sql;
 
 import java.util.List;
@@ -10,12 +11,19 @@ public class SqlTableBase implements SqlTable {
     final String insertRowSql;
     final String dropTblSql;
 
-
-    public SqlTableBase(final String name, final String createTableSql, final List<String> indexTableSql, final List<String> insertColumnNames) {
+    public SqlTableBase(
+            final String name,
+            final String createTableSql,
+            final List<String> indexTableSql,
+            final List<String> insertColumnNames) {
         this(name, createTableSql, indexTableSql, insertSql(name, insertColumnNames));
     }
 
-    public SqlTableBase(final String name, final String createTableSql, final List<String> indexTableSql, final String insertRowSql) {
+    public SqlTableBase(
+            final String name,
+            final String createTableSql,
+            final List<String> indexTableSql,
+            final String insertRowSql) {
         this.name = name;
         this.createTableSql = createTableSql;
         this.indexTableSql = indexTableSql != null ? indexTableSql : List.of();
@@ -64,5 +72,4 @@ public class SqlTableBase implements SqlTable {
         }
         return sb.append(")").toString();
     }
-
 }

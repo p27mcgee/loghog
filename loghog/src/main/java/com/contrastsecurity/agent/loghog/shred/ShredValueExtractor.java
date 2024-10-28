@@ -1,3 +1,4 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.shred;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ class ShredValueExtractor {
     private Map<String, Pattern> valueExtractors;
     public static final String DEFAULT_PATTERN_ID = "default";
 
-    public ShredValueExtractor(List<String> extractedValNames, Map<String, Pattern> valueExtractors) {
+    public ShredValueExtractor(
+            List<String> extractedValNames, Map<String, Pattern> valueExtractors) {
         if (extractedValNames == null) {
             this.extractedValNames = new ArrayList<>();
         } else {

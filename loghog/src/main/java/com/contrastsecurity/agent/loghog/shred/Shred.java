@@ -1,7 +1,7 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.shred;
 
 import com.contrastsecurity.agent.loghog.sql.SqlTable;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,7 +16,6 @@ public abstract class Shred {
     public static final boolean SHOW_MISFITS = false;
     public static final boolean VERBOSE = false;
 
-
     private final SqlTable shredTable;
     private final SqlTable shredMisfitsTable;
 
@@ -24,20 +23,24 @@ public abstract class Shred {
     private ShredEntryClassifier entryClassifier;
     private ShredValueExtractor valueExtractor;
 
-//        if (misfitsTblName == null) {
-//            this.misfitsTblName = tblName + "_misfits";
-//        } else {
-//            this.misfitsTblName = misfitsTblName;
-//        }
-//        if (createMisfitsSql == null) {
-//            this.createMisfitsSql = "create table " + this.misfitsTblName + "( line integer primary key references log(line))";
-//        } else {
-//            this.createMisfitsSql = createMisfitsSql;
-//        }
+    //        if (misfitsTblName == null) {
+    //            this.misfitsTblName = tblName + "_misfits";
+    //        } else {
+    //            this.misfitsTblName = misfitsTblName;
+    //        }
+    //        if (createMisfitsSql == null) {
+    //            this.createMisfitsSql = "create table " + this.misfitsTblName + "( line integer
+    // primary key references log(line))";
+    //        } else {
+    //            this.createMisfitsSql = createMisfitsSql;
+    //        }
 
-
-    public Shred(SqlTable shredTable, SqlTable shredMisfitsTable, ShredEntrySelector entrySelector,
-                 ShredEntryClassifier entryClassifier, ShredValueExtractor valueExtractor ) {
+    public Shred(
+            SqlTable shredTable,
+            SqlTable shredMisfitsTable,
+            ShredEntrySelector entrySelector,
+            ShredEntryClassifier entryClassifier,
+            ShredValueExtractor valueExtractor) {
         this.shredTable = shredTable;
         this.shredMisfitsTable = shredMisfitsTable;
         this.entrySelector = entrySelector;
@@ -52,7 +55,8 @@ public abstract class Shred {
     }
 
     // TODO recreate or keep?
-    public static void createEmptyTable(Connection connection, SqlTable sqlTable) throws SQLException {
+    public static void createEmptyTable(Connection connection, SqlTable sqlTable)
+            throws SQLException {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(sqlTable.dropTblSql());
             stmt.execute(sqlTable.createTableSql());
@@ -62,7 +66,8 @@ public abstract class Shred {
         }
     }
 
-    abstract Object[] transformValues(int line, String entry, String patternId, Map<String, Object> extractedVals);
+    abstract Object[] transformValues(
+            int line, String entry, String patternId, Map<String, Object> extractedVals);
 
     abstract Object[] transformMisfits(int line, int lastGoodLine);
 
@@ -89,18 +94,21 @@ public abstract class Shred {
                 System.out.println("\n");
             }
             System.out.println("Added " + totalAdded + " rows to table " + shredTable.name());
-            System.out.println("Added " + totalMisfits + " rows to table " + shredMisfitsTable.name());
+            System.out.println(
+                    "Added " + totalMisfits + " rows to table " + shredMisfitsTable.name());
         }
     }
 
-    protected int[] addRows(List<Object[]> logRows, int lastGoodLine, Connection connection) throws SQLException {
+    protected int[] addRows(List<Object[]> logRows, int lastGoodLine, Connection connection)
+            throws SQLException {
         List<Object[]> values = new ArrayList<>();
         List<Object[]> misfits = new ArrayList<>();
         int nAdded = 0;
         int nMisfits = 0;
 
         try (PreparedStatement insertStmt = connection.prepareStatement(shredTable.insertRowSql());
-             PreparedStatement insertMisfitsStmt = connection.prepareStatement(shredMisfitsTable.insertRowSql())) {
+                PreparedStatement insertMisfitsStmt =
+                        connection.prepareStatement(shredMisfitsTable.insertRowSql())) {
             connection.setAutoCommit(false);
 
             for (Object[] row : logRows) {
@@ -108,14 +116,19 @@ public abstract class Shred {
                 String entry = (String) row[1];
                 String patternId = entryClassifier.findPattern(entry);
                 try {
-                    Map<String, Object> extractedVals = valueExtractor.extractValues(patternId, entry);
-                    Object[]  insertVals = transformValues(line, entry, patternId, extractedVals);
+                    Map<String, Object> extractedVals =
+                            valueExtractor.extractValues(patternId, entry);
+                    Object[] insertVals = transformValues(line, entry, patternId, extractedVals);
                     values.add(insertVals);
                     lastGoodLine = line;
                     nAdded++;
                 } catch (Exception e) {
                     if (SHOW_MISFITS == false) {
-                        System.out.println("Extraction/transformation failed in entry line " + line + ": " + entry);
+                        System.out.println(
+                                "Extraction/transformation failed in entry line "
+                                        + line
+                                        + ": "
+                                        + entry);
                     }
                     Object[] misfitVals = this.transformMisfits(line, lastGoodLine);
                     misfits.add(misfitVals);
@@ -142,8 +155,6 @@ public abstract class Shred {
             connection.commit();
         }
 
-        return new int[]{nAdded, nMisfits, lastGoodLine};
+        return new int[] {nAdded, nMisfits, lastGoodLine};
     }
-
 }
-

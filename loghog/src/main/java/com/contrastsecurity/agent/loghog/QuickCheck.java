@@ -1,7 +1,5 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog;
-
-import com.contrastsecurity.agent.loghog.db.CreateDb;
-import com.contrastsecurity.agent.loghog.shred.MesgShred;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,24 +9,27 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QuickCheck {
-    private static final List<String[]> TELLS = Arrays.asList(
-            new String[]{"MAX_CONTEXT_SOURCE_EVENTS", "Maximum source events reached for this context."},
-            new String[]{"MAX_CONTEXT_PROPAGATION_EVENTS", "Ignoring propagator "},
-            new String[]{"MAX_TRACE_TTL", "Cleared expired assessment context"},
-            new String[]{"MAX_TRACE_TTL", "Removing expired key="},
-            new String[]{"CONTEXT_MAP_PURGE_TIMEOUT", "Removing long-living runnable"}
-    );
+    private static final List<String[]> TELLS =
+            Arrays.asList(
+                    new String[] {
+                        "MAX_CONTEXT_SOURCE_EVENTS",
+                        "Maximum source events reached for this context."
+                    },
+                    new String[] {"MAX_CONTEXT_PROPAGATION_EVENTS", "Ignoring propagator "},
+                    new String[] {"MAX_TRACE_TTL", "Cleared expired assessment context"},
+                    new String[] {"MAX_TRACE_TTL", "Removing expired key="},
+                    new String[] {"CONTEXT_MAP_PURGE_TIMEOUT", "Removing long-living runnable"});
 
     public static void reportTells(Connection connection) throws SQLException {
-        StringBuilder qrystr = new StringBuilder(
-                "SELECT entry \n" +
-                        "FROM log\n" +
-                        "WHERE \n" +
-                        "    line in (\n" +
-                        "         SELECT line \n" +
-                        "         FROM mesg \n" +
-                        "         WHERE false"
-        );
+        StringBuilder qrystr =
+                new StringBuilder(
+                        "SELECT entry \n"
+                                + "FROM log\n"
+                                + "WHERE \n"
+                                + "    line in (\n"
+                                + "         SELECT line \n"
+                                + "         FROM mesg \n"
+                                + "         WHERE false");
 
         for (String[] tell : TELLS) {
             qrystr.append("\n\t OR message like '%").append(tell[1]).append("%'");
@@ -47,18 +48,19 @@ public class QuickCheck {
         }
     }
 
-    public static void main(String[] args) {
-        if (args.length < 1) {
-            throw new IllegalArgumentException("Missing command line parameter for log name.");
-        }
-
-        String logname = args[0];
-        try {
-            Connection connection = CreateDb.connectDb(logname);
-            new MesgShred().createTables(connection);
-            reportTells(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    //    public static void main(String[] args) {
+    //        if (args.length < 1) {
+    //            throw new IllegalArgumentException("Missing command line parameter for log
+    // name.");
+    //        }
+    //
+    //        String logname = args[0];
+    //        try {
+    //            Connection connection = CreateDb.connectDb(logname);
+    //            new MesgShred().createTables(connection);
+    //            reportTells(connection);
+    //        } catch (SQLException e) {
+    //            e.printStackTrace();
+    //        }
+    //    }
 }

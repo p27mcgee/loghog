@@ -1,3 +1,4 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.db;
 
 import java.sql.Connection;
@@ -14,7 +15,7 @@ public class H2Database {
         String jdbcUrl = "jdbc:h2:" + storagePath;
 
         // TODO Who cares?
-        String username = "sa";
+        String username = "";
         String password = "";
 
         Connection connection = null;
@@ -33,7 +34,8 @@ public class H2Database {
         closeDatabase(connection, statement, null);
     }
 
-    public static void closeDatabase(final Connection connection, final Statement statement, final ResultSet resultSet) {
+    public static void closeDatabase(
+            final Connection connection, final Statement statement, final ResultSet resultSet) {
         try {
             if (resultSet != null) resultSet.close();
             if (statement != null) statement.close();
@@ -50,5 +52,4 @@ public class H2Database {
     public static void closeStatement(final Statement statement) throws SQLException {
         if (statement != null) statement.close();
     }
-
 }

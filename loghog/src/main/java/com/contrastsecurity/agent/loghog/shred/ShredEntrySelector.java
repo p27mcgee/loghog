@@ -1,3 +1,4 @@
+/* (C)2024 */
 package com.contrastsecurity.agent.loghog.shred;
 
 import java.sql.Connection;
@@ -20,7 +21,8 @@ public class ShredEntrySelector {
     }
 
     public ShredEntrySelector(String entrySignature) {
-        this(entrySignature,
+        this(
+                entrySignature,
                 "select line, entry from log where entry like '%" + entrySignature + "%'",
                 DEFAULT_BATCH_SIZE);
     }
@@ -34,7 +36,8 @@ public class ShredEntrySelector {
             if (entrySignature == null || entrySignature == ALL_ENTRIES_SIGNATURE) {
                 this.selectEntriesSql = ALL_ENTRIES_SQL;
             } else {
-                this.selectEntriesSql = "select line, entry from log where entry like '%" + entrySignature + "%'";
+                this.selectEntriesSql =
+                        "select line, entry from log where entry like '%" + entrySignature + "%'";
             }
         } else {
             this.selectEntriesSql = selectEntriesSql;
@@ -43,7 +46,8 @@ public class ShredEntrySelector {
     }
 
     // FIXME
-    // So this reads the query results into a batch row list and then accumulates all the batch lists
+    // So this reads the query results into a batch row list and then accumulates all the batch
+    // lists
     // into a batches list what is the point of this?  We are holding all the data in memory
     // so what is the point of the batch size?
     public List<List<Object[]>> selectBatches(Connection connection) throws SQLException {
@@ -53,7 +57,7 @@ public class ShredEntrySelector {
             while (true) {
                 List<Object[]> rows = new ArrayList<>();
                 for (int i = 0; i < this.batchSize && rs.next(); i++) {
-                    rows.add(new Object[]{rs.getInt("line"), rs.getString("entry")});
+                    rows.add(new Object[] {rs.getInt("line"), rs.getString("entry")});
                 }
                 if (rows.isEmpty()) {
                     break;
@@ -65,38 +69,38 @@ public class ShredEntrySelector {
     }
 
     /*
-    class FileLineIterator implements Iterator<String>, AutoCloseable {
+        class FileLineIterator implements Iterator<String>, AutoCloseable {
 
-    private final BufferedReader reader;
+        private final BufferedReader reader;
 
-    public FileLineIterator(String filename) throws IOException {
-        this.reader = new BufferedReader(new FileReader(filename));
-    }
+        public FileLineIterator(String filename) throws IOException {
+            this.reader = new BufferedReader(new FileReader(filename));
+        }
 
-    @Override
-    public boolean hasNext() {
-        try {
-            return reader.ready();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        @Override
+        public boolean hasNext() {
+            try {
+                return reader.ready();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @Override
+        public String next() {
+            try {
+                return reader.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @Override
+        public void close() throws IOException {
+            reader.close();
         }
     }
-
-    @Override
-    public String next() {
-        try {
-            return reader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void close() throws IOException {
-        reader.close();
-    }
-}
-     */
+         */
     public static final String ALL_ENTRIES_SIGNATURE = "";
     public static final String ALL_ENTRIES_SQL = "select line, entry from log";
     public static final int DEFAULT_BATCH_SIZE = 1000;
