@@ -22,7 +22,7 @@ public class LogDatabaseUtil {
         // fill log table
         int total = 0;
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute("DELETE FROM log");
+            stmt.execute("DELETE FROM \"log\"");
         }
         try (BufferedReader inlog = new BufferedReader(new FileReader(logFilePath))) {
             final List<String[]> chunk = new ArrayList<>(LOG_READ_CHUNK_SIZE);
@@ -44,11 +44,14 @@ public class LogDatabaseUtil {
         if (SHOW_PROGRESS) {
             System.out.println();
         }
+
         System.out.println("Added " + total + " rows to table 'log'");
     }
 
     public static void createLogTable(Connection connection) throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS log (line INTEGER PRIMARY KEY, entry TEXT)";
+        String sql =
+                "CREATE TABLE IF NOT EXISTS \"log\" (\"line\" INTEGER PRIMARY KEY, \"entry\""
+                        + " VARCHAR)";
         try (Statement stmt = connection.createStatement()) {
             stmt.execute(sql);
         }
@@ -56,7 +59,7 @@ public class LogDatabaseUtil {
 
     public static int addChunkOfLogEntries(List<String[]> chunk, Connection connection)
             throws SQLException {
-        String sql = "INSERT INTO log VALUES (?, ?)";
+        String sql = "INSERT INTO \"log\" VALUES (?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             connection.setAutoCommit(false);
             for (String[] entry : chunk) {

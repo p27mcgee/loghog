@@ -7,14 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public abstract class Shred {
     public static final String DEFAULT_TYPE = "default";
     public static final boolean SHOW_PROGRESS = false;
-    public static final boolean SHOW_MISFITS = true;
+    public static final boolean SHOW_MISFITS = false;
     public static final boolean VERBOSE = false;
 
     private final SqlTable shredTable;
@@ -50,18 +49,23 @@ public abstract class Shred {
     }
 
     public void createTables(Connection connection) throws SQLException {
-        createEmptyTable(connection, shredTable);
-        createEmptyTable(connection, shredMisfitsTable);
+        createEmptyTables(connection, shredTable, shredMisfitsTable);
         populateShredTables(connection);
     }
 
     // TODO recreate or keep?
-    public static void createEmptyTable(Connection connection, SqlTable sqlTable)
+    public static void createEmptyTables(
+            Connection connection, SqlTable shredTable, SqlTable shredMisfitsTable)
             throws SQLException {
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute(sqlTable.dropTblSql());
-            stmt.execute(sqlTable.createTableSql());
-            for (String indexSql : sqlTable.indexTableSql()) {
+            stmt.execute(shredMisfitsTable.dropTblSql());
+            stmt.execute(shredTable.dropTblSql());
+            stmt.execute(shredTable.createTableSql());
+            stmt.execute(shredMisfitsTable.createTableSql());
+            for (String indexSql : shredTable.indexTableSql()) {
+                stmt.execute(indexSql);
+            }
+            for (String indexSql : shredMisfitsTable.indexTableSql()) {
                 stmt.execute(indexSql);
             }
         }
@@ -116,9 +120,9 @@ public abstract class Shred {
                 int line = (int) row[0];
                 String entry = (String) row[1];
                 String patternId = entryClassifier.findPattern(entry);
-                Map<String, Object> extractedVals =
-                        valueExtractor.extractValues(patternId, entry);
-                if (extractedVals != null && extractedVals.size() == valueExtractor.expectedCount()) {
+                Map<String, Object> extractedVals = valueExtractor.extractValues(patternId, entry);
+                if (extractedVals != null
+                        && extractedVals.size() == valueExtractor.expectedCount()) {
                     Object[] insertVals = transformValues(line, entry, patternId, extractedVals);
                     values.add(insertVals);
                     lastGoodLine = line;

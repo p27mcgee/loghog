@@ -23,7 +23,7 @@ public class ShredEntrySelector {
     public ShredEntrySelector(String entrySignature) {
         this(
                 entrySignature,
-                "select line, entry from log where entry like '%" + entrySignature + "%'",
+                "select \"line\", \"entry\" from \"log\" where \"entry\" like '%" + entrySignature + "%'",
                 DEFAULT_BATCH_SIZE);
     }
 
@@ -37,7 +37,7 @@ public class ShredEntrySelector {
                 this.selectEntriesSql = ALL_ENTRIES_SQL;
             } else {
                 this.selectEntriesSql =
-                        "select line, entry from log where entry like '%" + entrySignature + "%'";
+                        "select \"line\", \"entry\" from \"log\" where \"entry\" like '%" + entrySignature + "%'";
             }
         } else {
             this.selectEntriesSql = selectEntriesSql;
@@ -102,6 +102,6 @@ public class ShredEntrySelector {
     }
          */
     public static final String ALL_ENTRIES_SIGNATURE = "";
-    public static final String ALL_ENTRIES_SQL = "select line, entry from log";
+    public static final String ALL_ENTRIES_SQL = "select \"line\", \"entry\" from \"log\"";
     public static final int DEFAULT_BATCH_SIZE = 1000;
 }

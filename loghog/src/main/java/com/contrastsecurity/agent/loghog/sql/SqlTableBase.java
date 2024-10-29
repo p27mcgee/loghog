@@ -28,7 +28,7 @@ public class SqlTableBase implements SqlTable {
         this.createTableSql = createTableSql;
         this.indexTableSql = indexTableSql != null ? indexTableSql : List.of();
         this.insertRowSql = insertRowSql;
-        this.dropTblSql = "drop table if exists " + name;
+        this.dropTblSql = "drop table if exists \"" + name + "\"";
     }
 
     @Override
@@ -58,10 +58,10 @@ public class SqlTableBase implements SqlTable {
 
     private static String insertSql(final String name, final List<String> insertColumnNames) {
         final StringBuilder sb = new StringBuilder("insert into ");
-        sb.append(name).append(" (");
+        sb.append("\"").append(name).append("\"").append(" (");
         String delimiter = "";
         for (final String insertColumnName : insertColumnNames) {
-            sb.append(delimiter).append(insertColumnName);
+            sb.append(delimiter).append("\"").append(insertColumnName).append("\"");
             delimiter = ", ";
         }
         sb.append(") values (");
