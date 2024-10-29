@@ -3,14 +3,14 @@ package com.contrastsecurity.agent.loghog.shred;
 
 public class PatternGroup {
 
-    public static final String LOG_TIMESTAMP_VAR = "timestamp";
+    public static final String TIMESTAMP_VAR = "timestamp";
     public static final String LOG_TIMESTAMP_XTRACT =
-            "^(?<" + LOG_TIMESTAMP_VAR + ">\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3})";
+            "^(?<" + TIMESTAMP_VAR + ">\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3})";
 
-    public static final String LOG_THREAD_VAR = "thread";
-    public static final String LOG_LOGGER_VAR = "logger";
+    public static final String THREAD_VAR = "thread";
+    public static final String LOGGER_VAR = "logger";
     public static final String LOG_THREAD_LOGGER_XTRACT =
-            "\\[(?<" + LOG_THREAD_VAR + ">\\S+) (?<" + LOG_LOGGER_VAR + ">\\S+)]";
+            "\\[(?<" + THREAD_VAR + ">\\S+) (?<" + LOGGER_VAR + ">\\S+)]";
 
     public static final String SHORT_PREAMBLE_XTRACT =
             LOG_TIMESTAMP_XTRACT + " " + LOG_THREAD_LOGGER_XTRACT + " ";
@@ -34,8 +34,8 @@ public class PatternGroup {
                     + LOG_LEVEL_TRACE
                     + ")";
 
-    public static final String LOG_LEVEL_VAR = "log_level";
-    public static final String LOG_LEVEL_XTRACT = "(?<" + LOG_LEVEL_VAR + ">" + LOG_LEVEL + ")";
+    public static final String LEVEL_VAR = "level";
+    public static final String LOG_LEVEL_XTRACT = "(?<" + LEVEL_VAR + ">" + LOG_LEVEL + ")";
 
     public static final String FULL_PREAMBLE_XTRACT =
             SHORT_PREAMBLE_XTRACT + LOG_LEVEL_XTRACT + " ";

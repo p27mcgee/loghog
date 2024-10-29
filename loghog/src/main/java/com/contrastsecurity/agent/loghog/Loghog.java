@@ -3,12 +3,26 @@ package com.contrastsecurity.agent.loghog;
 
 import com.contrastsecurity.agent.loghog.db.EmbeddedDatabaseFactory;
 import com.contrastsecurity.agent.loghog.db.LogDatabaseUtil;
+import com.contrastsecurity.agent.loghog.shred.MesgShred;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Loghog {
+
+    public static void createAndPopulateDb(final String logFilepath, final String dbFilepath) {
+        try (final Connection connection = EmbeddedDatabaseFactory.create(dbFilepath)) {
+            LogDatabaseUtil.initializeLogTable(connection, logFilepath);
+            new MesgShred().createTables(connection);
+            //            new LmclShred().createTables(connection);
+            //            new AcelShred().createTables(connection);
+            //            new AmqpShred().createTables(connection);
+            //            new CrumbShred().createTables(connection);
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -35,23 +49,10 @@ public class Loghog {
             System.out.println("Using specified database file: " + dbFilepath);
         }
         final File dbFile = new File(dbFilepath);
-        if (!dbFile.canWrite()) {
+        if (dbFile.exists() && !dbFile.canWrite()) {
             System.out.println("Database file is not writable: " + dbFilepath);
             System.exit(3);
         }
         createAndPopulateDb(logFilepath, dbFilepath);
-    }
-
-    public static void createAndPopulateDb(final String logFilepath, final String dbFilepath) {
-        try (final Connection connection = EmbeddedDatabaseFactory.create(dbFilepath)) {
-            LogDatabaseUtil.initializeLogTable(connection, logFilepath);
-            //            new MesgShred().createTables(connection);
-            //            new LmclShred().createTables(connection);
-            //            new AcelShred().createTables(connection);
-            //            new AmqpShred().createTables(connection);
-            //            new CrumbShred().createTables(connection);
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
-        }
     }
 }

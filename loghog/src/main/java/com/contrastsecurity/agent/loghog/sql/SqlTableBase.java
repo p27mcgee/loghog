@@ -33,27 +33,27 @@ public class SqlTableBase implements SqlTable {
 
     @Override
     public String name() {
-        return "";
+        return name;
     }
 
     @Override
     public String createTableSql() {
-        return "";
+        return createTableSql;
     }
 
     @Override
     public List<String> indexTableSql() {
-        return List.of();
+        return indexTableSql;
     }
 
     @Override
     public String insertRowSql() {
-        return "";
+        return insertRowSql;
     }
 
     @Override
     public String dropTblSql() {
-        return "";
+        return dropTblSql;
     }
 
     private static String insertSql(final String name, final List<String> insertColumnNames) {

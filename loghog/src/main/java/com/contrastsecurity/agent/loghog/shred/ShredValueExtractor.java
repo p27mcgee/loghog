@@ -29,16 +29,21 @@ class ShredValueExtractor {
     }
 
     public Map<String, Object> extractValues(String patternId, String entry) {
-        Map<String, Object> extractedVals = new HashMap<>();
         Pattern extractor = this.valueExtractors.get(patternId);
         if (extractor != null) {
             Matcher match = extractor.matcher(entry);
             if (match.find()) {
+                Map<String, Object> extractedVals = new HashMap<>();
                 for (String extractedValName : this.extractedValNames) {
                     extractedVals.put(extractedValName, match.group(extractedValName));
                 }
+                return extractedVals;
             }
         }
-        return extractedVals;
+        return null;
+    }
+
+    public int expectedCount() {
+        return extractedValNames.size();
     }
 }

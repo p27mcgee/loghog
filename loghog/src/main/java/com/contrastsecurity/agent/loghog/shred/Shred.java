@@ -7,13 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public abstract class Shred {
     public static final String DEFAULT_TYPE = "default";
     public static final boolean SHOW_PROGRESS = false;
-    public static final boolean SHOW_MISFITS = false;
+    public static final boolean SHOW_MISFITS = true;
     public static final boolean VERBOSE = false;
 
     private final SqlTable shredTable;
@@ -115,15 +116,15 @@ public abstract class Shred {
                 int line = (int) row[0];
                 String entry = (String) row[1];
                 String patternId = entryClassifier.findPattern(entry);
-                try {
-                    Map<String, Object> extractedVals =
-                            valueExtractor.extractValues(patternId, entry);
+                Map<String, Object> extractedVals =
+                        valueExtractor.extractValues(patternId, entry);
+                if (extractedVals != null && extractedVals.size() == valueExtractor.expectedCount()) {
                     Object[] insertVals = transformValues(line, entry, patternId, extractedVals);
                     values.add(insertVals);
                     lastGoodLine = line;
                     nAdded++;
-                } catch (Exception e) {
-                    if (SHOW_MISFITS == false) {
+                } else {
+                    if (SHOW_MISFITS) {
                         System.out.println(
                                 "Extraction/transformation failed in entry line "
                                         + line
@@ -136,6 +137,7 @@ public abstract class Shred {
                 }
             }
 
+            // add extracted values to shred
             for (Object[] value : values) {
                 for (int i = 0; i < value.length; i++) {
                     insertStmt.setObject(i + 1, value[i]);
@@ -144,6 +146,7 @@ public abstract class Shred {
             }
             insertStmt.executeBatch();
 
+            // add misfit row to misfits table
             for (Object[] misfit : misfits) {
                 for (int i = 0; i < misfit.length; i++) {
                     insertMisfitsStmt.setObject(i + 1, misfit[i]);

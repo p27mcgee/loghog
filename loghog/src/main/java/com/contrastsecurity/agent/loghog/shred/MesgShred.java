@@ -48,7 +48,7 @@ public class MesgShred extends Shred {
     public static final String MESG_TBL_CREATE_SQL =
             """
 create table mesg(
-    line integer primary key references log(line),
+    line DECIMAL primary key references log(line),
     timestamp datetime not null,
     thread text not null,
     logger text not null,
@@ -61,8 +61,6 @@ create table mesg(
                     "create index idx_mesg_thread on mesg(thread)");
     public static final List<String> MESG_TBL_COLUMNS =
             Arrays.asList("line", "timestamp", "thread", "logger", "level", "message");
-    public static final List<String> MESG_TBL_EXTRACTED_COLUMNS =
-            Arrays.asList("timestamp", "thread", "logger", "level", "message");
 
     // Selects all lines from log table
     public static final ShredEntrySelector ENTRY_SELECTOR =
@@ -74,8 +72,7 @@ create table mesg(
     public static final ShredEntryClassifier ENTRY_CLASSIFIER = new ShredEntryClassifier();
 
     public static final List<String> EXTRACTED_VAL_NAMES =
-            Arrays.asList(
-                    LOG_TIMESTAMP_VAR, LOG_THREAD_VAR, LOG_LOGGER_VAR, LOG_LEVEL_VAR, "message");
+            Arrays.asList(TIMESTAMP_VAR, THREAD_VAR, LOGGER_VAR, LEVEL_VAR, "message");
     public static final Map<String, Pattern> VALUE_EXTRACTORS =
             new HashMap<String, Pattern>() {
                 {
@@ -92,9 +89,11 @@ create table mesg(
     // are continuation lines from a preceding multi-line log message
     public static final String CONTINUATIONS_TBL_NAME = "cont";
     public static final String CONTINUATIONS_TBL_CREATE_SQL =
-            "create table cont("
-                    + "line integer primary key references log(line),"
-                    + "mesg integer key references mesg(line))";
+"""
+create table cont(
+    foreign key (line) references log(line),
+    foreign key (mesg) references mesg(line)
+""";
     public static final List<String> CONTINUATIONS_TBL_INDEX_SQLS = List.of();
     public static final List<String> CONTINUATIONS_TBL_COLUMNS = Arrays.asList("line", "mesg");
 }

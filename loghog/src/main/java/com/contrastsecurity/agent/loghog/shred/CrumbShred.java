@@ -31,10 +31,10 @@ public class CrumbShred extends Shred {
             int line, String entry, String patternId, Map<String, Object> extractedVals) {
         return new Object[] {
             line,
-            extractedVals.get(LOG_TIMESTAMP_VAR),
-            extractedVals.get(LOG_THREAD_VAR),
-            extractedVals.get(LOG_LOGGER_VAR),
-            extractedVals.get(LOG_LEVEL_VAR),
+            extractedVals.get(TIMESTAMP_VAR),
+            extractedVals.get(THREAD_VAR),
+            extractedVals.get(LOGGER_VAR),
+            extractedVals.get(LEVEL_VAR),
             extractedVals.get("message")
         };
     }
@@ -83,8 +83,7 @@ create table crumb(
             new ShredEntryClassifier(PATTERN_SIGNATURES);
 
     public static final List<String> EXTRACTED_VAL_NAMES =
-            Arrays.asList(
-                    REQ_VAR, RESP_VAR, URL_VAR, LOG_THREAD_VAR, LOG_TIMESTAMP_VAR, STACKFRAME_VAR);
+            Arrays.asList(REQ_VAR, RESP_VAR, URL_VAR, THREAD_VAR, TIMESTAMP_VAR, STACKFRAME_VAR);
     public static final Map<String, Pattern> VALUE_EXTRACTORS =
             new HashMap<String, Pattern>() {
                 {
