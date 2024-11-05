@@ -1,0 +1,1573 @@
+2024-10-28 15:30:28.788264-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.runSync(ConnectJob.java:109)
+	at org.jkiss.dbeaver.ui.actions.datasource.DataSourceHandler.connectToDataSource(DataSourceHandler.java:122)
+	at org.jkiss.dbeaver.ui.actions.datasource.UIServiceConnectionsImpl.initConnection(UIServiceConnectionsImpl.java:87)
+	at org.jkiss.dbeaver.model.DBUtils.initDataSource(DBUtils.java:2456)
+	at org.jkiss.dbeaver.model.navigator.DBNDataSource.initializeNode(DBNDataSource.java:159)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.getChildren(DBNDatabaseNode.java:226)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.getChildren(DBNDatabaseNode.java:1)
+	at org.jkiss.dbeaver.model.navigator.DBNUtils.getNodeChildrenFiltered(DBNUtils.java:92)
+	at org.jkiss.dbeaver.ui.navigator.database.load.TreeLoadService.evaluate(TreeLoadService.java:49)
+	at org.jkiss.dbeaver.ui.navigator.database.load.TreeLoadService.evaluate(TreeLoadService.java:1)
+	at org.jkiss.dbeaver.ui.LoadingJob.run(LoadingJob.java:88)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 15:30:34.438451-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 15:37:48.498073-04:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.contrastsecurity.agent.loghog.db.H2Database.openDatabase(H2Database.java:24)
+	at com.contrastsecurity.agent.loghog.db.EmbeddedDatabaseFactory.create(EmbeddedDatabaseFactory.java:9)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:16)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:58)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 21 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 15 more
+2024-10-28 15:43:54.002731-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 15:46:53.944682-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:13:51.872168-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:23:17.304541-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:24:54.836637-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:29:04.615218-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:141)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:40:44.467697-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:142)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:46:29.086402-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:142)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:47:01.871388-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 16:47:02.038981-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 16:53:34.180367-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:142)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:56:02.013038-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:142)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:57:13.002667-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:142)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:85)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:54)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:58:17.295388-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:144)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:86)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:55)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 16:59:52.261485-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:144)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:86)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:55)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 17:04:32.064390-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:298)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1396)
+	at org.h2.jdbc.JdbcPreparedStatement.setObject(JdbcPreparedStatement.java:506)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:154)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:86)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:55)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-28 17:07:09.155643-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MESG" not found; SQL statement:
+insert into mesg (line, timestamp, thread, logger, level, message) values (?, ?, ?, ?, ?, ?) [42102-232]
+2024-10-28 17:12:56.917614-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MESG" not found; SQL statement:
+insert into mesg (line, timestamp, thread, logger, level, message) values (?, ?, ?, ?, ?, ?) [42102-232]
+2024-10-28 17:14:55.319196-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MESG" not found; SQL statement:
+insert into mesg (line, timestamp, thread, logger, level, message) values (?, ?, ?, ?, ?, ?) [42102-232]
+2024-10-28 17:15:22.925484-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 17:15:23.065056-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 17:16:31.177671-04:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.contrastsecurity.agent.loghog.db.H2Database.openDatabase(H2Database.java:24)
+	at com.contrastsecurity.agent.loghog.db.EmbeddedDatabaseFactory.create(EmbeddedDatabaseFactory.java:9)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:15)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 21 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 15 more
+2024-10-28 17:18:46.018942-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(line integer primary key references log(line),mesg integer [*]key references mesg(line))"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(line integer primary key references log(line),mesg integer key references mesg(line)) [42001-232]
+2024-10-28 17:24:46.674367-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    line integer primary key references log(line),\000a    mesg integer [*]key references mesg(line)\000a)\000a"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(
+    line integer primary key references log(line),
+    mesg integer key references mesg(line)
+)
+ [42001-232]
+2024-10-28 17:26:16.096290-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    line integer primary key references log(line),\000a    mesg integer [*]key references mesg(line))\000a"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(
+    line integer primary key references log(line),
+    mesg integer key references mesg(line))
+ [42001-232]
+2024-10-28 17:28:26.354052-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    line integer primary key references log(line),\000a    mesg integer not null [*]key references mesg(line))\000a"; expected "DEFAULT, GENERATED, ON UPDATE, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(
+    line integer primary key references log(line),
+    mesg integer not null key references mesg(line))
+ [42001-232]
+2024-10-28 17:33:37.205097-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    line integer primary key references log,\000a    mesg integer [*]foreign key references mesg)\000a"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(
+    line integer primary key references log,
+    mesg integer foreign key references mesg)
+ [42001-232]
+2024-10-28 17:33:59.262752-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    line integer primary key,\000a    mesg integer [*]foreign key references mesg)\000a"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table cont(
+    line integer primary key,
+    mesg integer foreign key references mesg)
+ [42001-232]
+2024-10-28 17:36:49.010710-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table cont(\000a    foreign key (line) references log(line),\000a    foreign key (mesg) references mesg(line)\000a[*]"; expected "INDEX, ON, NOT DEFERRABLE, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table cont(
+    foreign key (line) references log(line),
+    foreign key (mesg) references mesg(line)
+ [42001-232]
+2024-10-28 23:40:02.356175-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.ui.editors.DatabaseLazyEditorInput.initializeRealInput(DatabaseLazyEditorInput.java:262)
+	at org.jkiss.dbeaver.ui.editors.ProgressEditorPart$InitNodeService.evaluate(ProgressEditorPart.java:171)
+	at org.jkiss.dbeaver.ui.editors.ProgressEditorPart$InitNodeService.evaluate(ProgressEditorPart.java:1)
+	at org.jkiss.dbeaver.ui.LoadingJob.run(LoadingJob.java:88)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-28 23:40:05.256541-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 10:56:04.874028-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "log" not found; SQL statement:
+create table "mesg" ("line" integer not null, "timestamp" timestamp(3) not null, "thread" varchar not null, "logger" varchar not null, "message" varchar, primary key ("line"), constraint "mesg_FK_line" foreign key ("line") references "log" ("line")) [42102-232]
+2024-10-29 10:57:43.391732-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 10:57:43.600918-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:03:04.930827-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:03:05.155709-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.impl.sql.edit.struct.SQLTableManager.getTableDDL(SQLTableManager.java:265)
+	at org.jkiss.dbeaver.model.struct.DBStructUtils.generateTableDDL(DBStructUtils.java:102)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.getTableDDL(GenericMetaModel.java:692)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.getTableDDL(H2MetaModel.java:76)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTable.getObjectDefinitionText(GenericTable.java:83)
+	at org.jkiss.dbeaver.model.struct.DBStructUtils.getTableDDL(DBStructUtils.java:124)
+	at org.jkiss.dbeaver.model.struct.DBStructUtils.generateTableListDDL(DBStructUtils.java:148)
+	at org.jkiss.dbeaver.ui.editors.sql.SQLSourceViewer.getSourceText(SQLSourceViewer.java:102)
+	at org.jkiss.dbeaver.ui.editors.sql.SQLEditorNested$SourceObjectDocumentProvider.loadSourceText(SQLEditorNested.java:330)
+	at org.jkiss.dbeaver.ui.editors.sql.SQLObjectDocumentProvider$1.lambda$0(SQLObjectDocumentProvider.java:106)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.editors.sql.SQLObjectDocumentProvider$1.run(SQLObjectDocumentProvider.java:104)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:04:53.279051-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericObjectContainer.cacheStructure(GenericObjectContainer.java:264)
+	at org.jkiss.dbeaver.ext.generic.model.GenericObjectContainer.refreshObject(GenericObjectContainer.java:439)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.lambda$0(DBNDatabaseNode.java:362)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.refreshNode(DBNDatabaseNode.java:360)
+	at org.jkiss.dbeaver.ui.navigator.actions.NavigatorHandlerRefresh$1.run(NavigatorHandlerRefresh.java:189)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:04:53.279724-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericObjectContainer.cacheStructure(GenericObjectContainer.java:264)
+	at org.jkiss.dbeaver.ext.generic.model.GenericObjectContainer.refreshObject(GenericObjectContainer.java:439)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.lambda$0(DBNDatabaseNode.java:362)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.refreshNode(DBNDatabaseNode.java:360)
+	at org.jkiss.dbeaver.ui.navigator.actions.NavigatorHandlerRefresh$1.run(NavigatorHandlerRefresh.java:189)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:07:40.302883-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "mesg" already exists; SQL statement:
+create table "mesg" ("line" integer not null, "timestamp" timestamp(3) not null, "thread" varchar not null, "logger" varchar not null, "message" varchar, primary key ("line"), constraint "mesg_FK_line" foreign key ("line") references "log" ("line")) [42101-232]
+2024-10-29 11:20:38.826248-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:21:08.248128-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:21:08.263028-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.ForeignKeysCache.fetchObject(ForeignKeysCache.java:146)
+	at org.jkiss.dbeaver.ext.generic.model.ForeignKeysCache.fetchObject(ForeignKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:356)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getAssociations(GenericTableBase.java:283)
+	at org.jkiss.dbeaver.model.virtual.DBVUtils.getAllAssociations(DBVUtils.java:329)
+	at org.jkiss.dbeaver.model.DBUtils.getAttributeReferrers(DBUtils.java:994)
+	at org.jkiss.dbeaver.model.data.DBDAttributeBindingMeta.lateBinding(DBDAttributeBindingMeta.java:267)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:898)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:21:21.866016-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 11:26:01.066450-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "mesg" because "cont_FK_mesg" depends on it; SQL statement:
+drop table if exists "mesg" [90107-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeUpdate(Command.java:248)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createEmptyTable(Shred.java:62)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-29 11:35:25.564228-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOG" not found (candidates are: "log"); SQL statement:
+select line, entry from log [42103-232]
+2024-10-29 11:38:05.326880-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOG" not found (candidates are: "log"); SQL statement:
+select line, entry from log [42103-232]
+2024-10-29 11:39:25.917871-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOG" not found (candidates are: "log"); SQL statement:
+select line, entry from log [42103-232]
+2024-10-29 12:34:00.995562-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOG" not found (candidates are: "log"); SQL statement:
+select line, entry from log [42103-232]
+2024-10-29 12:35:40.083048-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LOG" not found (candidates are: "log"); SQL statement:
+select line, entry from log [42103-232]
+2024-10-29 12:35:55.768431-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "LINE" not found; SQL statement:
+select line, entry from "log" [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1228)
+	at org.h2.command.query.Query.prepare(Query.java:232)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315)
+	at com.contrastsecurity.agent.loghog.shred.ShredEntrySelector.selectBatches(ShredEntrySelector.java:55)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:86)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-29 12:37:10.958687-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column """line""" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3518)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at com.contrastsecurity.agent.loghog.shred.ShredEntrySelector.selectBatches(ShredEntrySelector.java:60)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:86)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-29 12:37:57.689092-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "level" not found; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:786)
+	at org.h2.command.Parser.parseColumn(Parser.java:1171)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1156)
+	at org.h2.command.Parser.parseInsert(Parser.java:1530)
+	at org.h2.command.Parser.parsePrepared(Parser.java:698)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:556)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:114)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+2024-10-29 12:40:15.484487-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2006)
+	at org.h2.value.Value.convertTo(Value.java:1179)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1118)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:406)
+	at org.h2.table.Table.convertInsertRow(Table.java:963)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeBatchUpdate(Command.java:271)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatchInternal(JdbcPreparedStatement.java:1318)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1267)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: java.lang.NumberFormatException: 15,930
+	at org.h2.util.StringUtils.parseUInt31(StringUtils.java:1117)
+	at org.h2.util.DateTimeUtils.parseTimeNanos(DateTimeUtils.java:267)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:375)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 18 more
+2024-10-29 12:40:15.489273-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcBatchUpdateException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1277)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2006)
+	at org.h2.value.Value.convertTo(Value.java:1179)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1118)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:406)
+	at org.h2.table.Table.convertInsertRow(Table.java:963)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeBatchUpdate(Command.java:271)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatchInternal(JdbcPreparedStatement.java:1318)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1267)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: java.lang.NumberFormatException: 15,930
+	at org.h2.util.StringUtils.parseUInt31(StringUtils.java:1117)
+	at org.h2.util.DateTimeUtils.parseTimeNanos(DateTimeUtils.java:267)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:375)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 18 more
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,932"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,935"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,938"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,939"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,953"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,958"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,044"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,052"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,113"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,151"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,196"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,231"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,236"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+(truncated)
+2024-10-29 12:40:48.719358-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2006)
+	at org.h2.value.Value.convertTo(Value.java:1179)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1118)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:406)
+	at org.h2.table.Table.convertInsertRow(Table.java:963)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeBatchUpdate(Command.java:271)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatchInternal(JdbcPreparedStatement.java:1318)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1267)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: java.lang.NumberFormatException: 15,930
+	at org.h2.util.StringUtils.parseUInt31(StringUtils.java:1117)
+	at org.h2.util.DateTimeUtils.parseTimeNanos(DateTimeUtils.java:267)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:375)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 18 more
+2024-10-29 12:40:48.729211-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcBatchUpdateException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1277)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,930"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:88)
+	at org.h2.value.Value.convertToTimestamp(Value.java:2006)
+	at org.h2.value.Value.convertTo(Value.java:1179)
+	at org.h2.value.Value.convertForAssignTo(Value.java:1118)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:406)
+	at org.h2.table.Table.convertInsertRow(Table.java:963)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:167)
+	at org.h2.command.dml.Insert.update(Insert.java:135)
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
+	at org.h2.command.Command.executeUpdate(Command.java:304)
+	at org.h2.command.Command.executeBatchUpdate(Command.java:271)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatchInternal(JdbcPreparedStatement.java:1318)
+	at org.h2.jdbc.JdbcPreparedStatement.executeBatch(JdbcPreparedStatement.java:1267)
+	at com.contrastsecurity.agent.loghog.shred.Shred.addRows(Shred.java:151)
+	at com.contrastsecurity.agent.loghog.shred.Shred.populateShredTables(Shred.java:90)
+	at com.contrastsecurity.agent.loghog.shred.Shred.createTables(Shred.java:53)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:17)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: java.lang.NumberFormatException: 15,930
+	at org.h2.util.StringUtils.parseUInt31(StringUtils.java:1117)
+	at org.h2.util.DateTimeUtils.parseTimeNanos(DateTimeUtils.java:267)
+	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:375)
+	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
+	... 18 more
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,932"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,935"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,938"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,939"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,953"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:15,958"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,044"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,052"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,113"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,151"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,196"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,231"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,233"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,236"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,237"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,238"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,239"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,240"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,241"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,242"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+org.h2.jdbc.JdbcSQLDataException: Cannot parse "TIMESTAMP" constant "2024-10-28 14:36:16,243"; SQL statement:
+insert into "mesg" ("line", "timestamp", "thread", "logger", "level", "message") values (?, ?, ?, ?, ?, ?) [22007-232]
+(truncated)
+2024-10-29 12:47:30.164781-04:00 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.populateClientAppName(GenericDataSource.java:200)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.openConnection(GenericDataSource.java:163)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.openConnection(H2DataSource.java:74)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCExecutionContext.connect(JDBCExecutionContext.java:119)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.initializeMainContext(JDBCRemoteInstance.java:102)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCRemoteInstance.<init>(JDBCRemoteInstance.java:61)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource.initializeRemoteInstance(JDBCDataSource.java:121)
+	at org.jkiss.dbeaver.ext.generic.model.GenericDataSource.<init>(GenericDataSource.java:125)
+	at org.jkiss.dbeaver.ext.h2.model.H2DataSource.<init>(H2DataSource.java:43)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createDataSourceImpl(H2MetaModel.java:56)
+	at org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider.openDataSource(GenericDataSourceProvider.java:106)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.openDataSource(DataSourceDescriptor.java:1406)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect0(DataSourceDescriptor.java:1276)
+	at org.jkiss.dbeaver.registry.DataSourceDescriptor.connect(DataSourceDescriptor.java:1061)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.run(ConnectJob.java:78)
+	at org.jkiss.dbeaver.runtime.jobs.ConnectJob.runSync(ConnectJob.java:109)
+	at org.jkiss.dbeaver.ui.actions.datasource.DataSourceHandler.connectToDataSource(DataSourceHandler.java:122)
+	at org.jkiss.dbeaver.ui.actions.datasource.UIServiceConnectionsImpl.initConnection(UIServiceConnectionsImpl.java:87)
+	at org.jkiss.dbeaver.model.DBUtils.initDataSource(DBUtils.java:2456)
+	at org.jkiss.dbeaver.model.navigator.DBNDataSource.initializeNode(DBNDataSource.java:159)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.getChildren(DBNDatabaseNode.java:226)
+	at org.jkiss.dbeaver.model.navigator.DBNDatabaseNode.getChildren(DBNDatabaseNode.java:1)
+	at org.jkiss.dbeaver.model.navigator.DBNUtils.getNodeChildrenFiltered(DBNUtils.java:92)
+	at org.jkiss.dbeaver.ui.navigator.database.load.TreeLoadService.evaluate(TreeLoadService.java:49)
+	at org.jkiss.dbeaver.ui.navigator.database.load.TreeLoadService.evaluate(TreeLoadService.java:1)
+	at org.jkiss.dbeaver.ui.LoadingJob.run(LoadingJob.java:88)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 12:47:37.616787-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 12:47:37.618178-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.ForeignKeysCache.fetchObject(ForeignKeysCache.java:146)
+	at org.jkiss.dbeaver.ext.generic.model.ForeignKeysCache.fetchObject(ForeignKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:356)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getAssociations(GenericTableBase.java:283)
+	at org.jkiss.dbeaver.model.virtual.DBVUtils.getAllAssociations(DBVUtils.java:329)
+	at org.jkiss.dbeaver.model.DBUtils.getAttributeReferrers(DBUtils.java:994)
+	at org.jkiss.dbeaver.model.data.DBDAttributeBindingMeta.lateBinding(DBDAttributeBindingMeta.java:267)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:898)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 12:47:48.027126-04:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "KEY_SEQ" not found [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at org.jkiss.dbeaver.model.impl.jdbc.exec.JDBCResultSetImpl.getInt(JDBCResultSetImpl.java:502)
+	at org.jkiss.dbeaver.model.impl.jdbc.JDBCUtils.safeGetInt(JDBCUtils.java:115)
+	at org.jkiss.dbeaver.ext.generic.model.GenericUtils.safeGetInt(GenericUtils.java:84)
+	at org.jkiss.dbeaver.ext.generic.model.meta.GenericMetaModel.createConstraintColumnsImpl(GenericMetaModel.java:945)
+	at org.jkiss.dbeaver.ext.h2.model.H2MetaModel.createConstraintColumnsImpl(H2MetaModel.java:179)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:98)
+	at org.jkiss.dbeaver.ext.generic.model.ConstraintKeysCache.fetchObjectRow(ConstraintKeysCache.java:1)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.loadObjects(JDBCCompositeCache.java:365)
+	at org.jkiss.dbeaver.model.impl.jdbc.cache.JDBCCompositeCache.getObjects(JDBCCompositeCache.java:123)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:252)
+	at org.jkiss.dbeaver.ext.generic.model.GenericTableBase.getConstraints(GenericTableBase.java:1)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.getBestIdentifier(DBExecUtils.java:541)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.bindAttributes(DBExecUtils.java:878)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetDataReceiver.fetchEnd(ResultSetDataReceiver.java:166)
+	at org.jkiss.dbeaver.model.impl.jdbc.struct.JDBCTable.readData(JDBCTable.java:219)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.lambda$0(ResultSetJobDataRead.java:128)
+	at org.jkiss.dbeaver.model.exec.DBExecUtils.tryExecuteRecover(DBExecUtils.java:192)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetJobDataRead.run(ResultSetJobDataRead.java:126)
+	at org.jkiss.dbeaver.ui.controls.resultset.ResultSetViewer$ResultSetDataPumpJob.run(ResultSetViewer.java:5166)
+	at org.jkiss.dbeaver.model.runtime.AbstractJob.run(AbstractJob.java:117)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-10-29 12:52:45.601185-04:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.contrastsecurity.agent.loghog.db.H2Database.openDatabase(H2Database.java:24)
+	at com.contrastsecurity.agent.loghog.db.EmbeddedDatabaseFactory.create(EmbeddedDatabaseFactory.java:9)
+	at com.contrastsecurity.agent.loghog.Loghog.createAndPopulateDb(Loghog.java:15)
+	at com.contrastsecurity.agent.loghog.Loghog.main(Loghog.java:56)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]" [50000-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 21 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/philmcgee/code/_dev/loghog/resources/logs/11556231886/failed11/SpringWebFluxIT_V5_1-20241028T143614.841-2052bc980f79.db.mv.db [2.3.232/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 15 more
